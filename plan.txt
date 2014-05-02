@@ -1,0 +1,9 @@
+// 1. BrowserAction
+//  1.1 When clicked opens chat pane
+//  1.2 When clicked communicates URL/chatroom to server
+
+// 2. Background Script
+//  2.1 Listning to tab URLs
+
+// 3. Server
+//  3.1 Running Node/Websockets
