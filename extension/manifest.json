@@ -5,7 +5,11 @@
   "version": "0.0.1",
 
   "background": {
+<<<<<<< HEAD
       "page": "./background.html"
+=======
+      "scripts": ["background.js"]
+>>>>>>> 28e1428ec98158bf6d9371883d2e596105ac8713
   },
 
   "browser_action": {
@@ -33,5 +37,9 @@
       "http://some-app.herokuapp.com"
   ],
  
+<<<<<<< HEAD
   "content_security_policy": "script-src 'self' http://localhost:3000; object-src 'self'"
+=======
+  "content_security_policy": "script-src 'self'; object-src 'self'"
+>>>>>>> 28e1428ec98158bf6d9371883d2e596105ac8713
 }
