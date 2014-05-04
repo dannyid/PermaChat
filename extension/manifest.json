@@ -30,9 +30,11 @@
   "permissions": [
       "notifications",
       "tabs",
-      "http://permachat.herokuapp.com",
-      "//code.jquery.com/*"
+      "http://localhost:3000/*",
+      "http://permachat.herokuapp.com/*",
+      "http://code.jquery.com/*",
+      "https://code.jquery.com/*"
   ],
  
-  "content_security_policy": "script-src 'self' http://localhost:3000 http://permachat.herokuapp.com //codejquery.com/*; object-src 'self'"
+  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://code.jquery.com/;"
 }
