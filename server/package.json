@@ -1,0 +1,24 @@
+{
+  "name": "PermaChat-Server",
+  "version": "0.0.1",
+  "description": "Socket.io server for PermaChat app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dannyid/PermaChat.git"
+  },
+  "author": "dannyid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dannyid/PermaChat/issues"
+  },
+  "homepage": "https://github.com/dannyid/PermaChat",
+  "dependencies": {
+    "express": "^4.1.1",
+    "socket.io": "^0.9.16"
+  }
+}
