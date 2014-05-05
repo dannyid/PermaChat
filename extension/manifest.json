@@ -7,7 +7,7 @@
   "background": {
       "page": "./background.html"
   },
-
+  
   "browser_action": {
       "default_title": "PermaChat",
       "default_icon": "./img/chaticon16.png"
@@ -31,9 +31,8 @@
       "notifications",
       "tabs",
       "http://localhost:3000/*",
-      "http://permachat.herokuapp.com/*",
-      "http://code.jquery.com/*",
-      "https://code.jquery.com/*"
+      "http://*/*",
+      "https://*/*"
   ],
  
   "content_security_policy": "script-src 'self' http://localhost:3000 https://code.jquery.com/; object-src 'self'"
