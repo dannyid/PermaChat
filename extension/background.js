@@ -13,8 +13,8 @@ socket.on("connect", function(data) {
     socket.emit("join", roomName);
 
     // on browserAction click, inject chatbox js and css
-    chrome.tabs.executeScript(tab.id, {'file': 'injectChat.css'}, function(data){'chatbox css injected'})
-    chrome.tabs.executeScript(tab.id, {'file': 'injectChat.js'}, function(data){'chatbox injected with js'})
+    chrome.tabs.executeScript(tab.id, {'file': 'injectChat.js'}, function(data){console.log('chatbox injected with js')})
+//    chrome.tabs.executeScript(tab.id, {'file': 'injectChat.css'}, function(data){console.log('chatbox css injected')})
   };
 
   chrome.browserAction.onClicked.addListener(onClick);
