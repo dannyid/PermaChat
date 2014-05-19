@@ -2,21 +2,21 @@
 var socket = io.connect();
 
 function addMessage( msg, nick ) {
-	$( "#chatEntries" ).append( '<div class="message"><p>' + nick + ' : ' + msg + '</p></div>' );
+	$( "#chatEntries" ).append( '<div class="message"><p><span id="nick">'+nick+'</span> : '+msg+'</p></div>' );
 };
 
 function sentMessage() {
 	if ( $( '#messageInput' ).val() != "" ) 
 	{
 		socket.emit( 'message', $( '#messageInput' ).val());
-		addMessage( $( '#messageInput' ).val(), "Me", new Date().toISOString(), true );
+		addMessage( $( '#messageInput' ).val(), localStorage["name"] + " (Me)");
 		$( '#messageInput' ).val('');
 	}
 };
 
-function setnick() {
+function setNick() {
 	if ( $( "#nickInput" ).val() != "" ) {
-		socket.emit( 'setnick', $( "#nickInput" ).val() );
+		socket.emit( 'setNick', $( "#nickInput" ).val() );
 		$( '#chatControls' ).show();
 		$( '#nickInput' ).hide();
 		$( '#nickSet' ).hide();
@@ -49,7 +49,7 @@ $( document ).ready( function() {
 	    $( "#chatControls" ).hide();
         $( 'input' ).focus(); // focus on nick input upon page load
 	    $( "#nickSet" ).click( function() { 
-            setnick(); 
+            setNick(); 
             $( 'input' ).focus(); // focus on messge input after submitting nick
         } );
 	    $( "#submit" ).click( function() { 

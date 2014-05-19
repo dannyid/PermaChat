@@ -40,7 +40,7 @@ io.sockets.on('connection', function (socket) {
   });
 
 	socket.on('setNick', function (data) {
-		socket.set('nick', data);
+    socket.set('nick', data);
 	});
 
 	socket.on('message', function (message) {
