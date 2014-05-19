@@ -1,8 +1,8 @@
 
 var socket = io.connect();
 
-function addMessage( msg, pseudo ) {
-	$( "#chatEntries" ).append( '<div class="message"><p>' + pseudo + ' : ' + msg + '</p></div>' );
+function addMessage( msg, nick ) {
+	$( "#chatEntries" ).append( '<div class="message"><p>' + nick + ' : ' + msg + '</p></div>' );
 };
 
 function sentMessage() {
@@ -14,13 +14,13 @@ function sentMessage() {
 	}
 };
 
-function setPseudo() {
-	if ( $( "#pseudoInput" ).val() != "" ) {
-		socket.emit( 'setPseudo', $( "#pseudoInput" ).val() );
+function setnick() {
+	if ( $( "#nickInput" ).val() != "" ) {
+		socket.emit( 'setnick', $( "#nickInput" ).val() );
 		$( '#chatControls' ).show();
-		$( '#pseudoInput' ).hide();
-		$( '#pseudoSet' ).hide();
-        localStorage["name"] = $( "#pseudoInput" ).val();
+		$( '#nickInput' ).hide();
+		$( '#nickSet' ).hide();
+        localStorage["name"] = $( "#nickInput" ).val();
         console.log("Name in localStroage: " + localStorage["name"])
 	}
 };
@@ -32,25 +32,25 @@ socket.on( "connect", function( data ) {
 
 // add message to screen upon receiving it from server
 socket.on( 'message', function( data ) {
-	addMessage( data[ 'message' ], data[ 'pseudo' ] );
+	addMessage( data[ 'message' ], data[ 'nick' ] );
 });
 
 
 $( document ).ready( function() {
     if (localStorage.name) {
-        $( "#pseudoInput" ).val(localStorage.name); 
-        console.log($( "#pseudoInput" ).val());
-        $( "#pseudoSet" ).click();
-        console.log($( "#pseudoInput" ).val());
+        $( "#nickInput" ).val(localStorage.name); 
+        console.log($( "#nickInput" ).val());
+        $( "#nickSet" ).click();
+        console.log($( "#nickInput" ).val());
     };    
 
-    // initialize fn - hide chat box until nickname is set, add events to buttons
+    // initialize fn - hide chat box until nick is set, add events to buttons
     $( function() {
 	    $( "#chatControls" ).hide();
-        $( 'input' ).focus(); // focus on nickname input upon page load
-	    $( "#pseudoSet" ).click( function() { 
-            setPseudo(); 
-            $( 'input' ).focus(); // focus on messge input after submitting nickname
+        $( 'input' ).focus(); // focus on nick input upon page load
+	    $( "#nickSet" ).click( function() { 
+            setnick(); 
+            $( 'input' ).focus(); // focus on messge input after submitting nick
         } );
 	    $( "#submit" ).click( function() { 
             sentMessage(); 

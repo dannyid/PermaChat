@@ -2,13 +2,14 @@
 var body = document.getElementsByTagName('body')[0];
 var html = document.getElementsByTagName('html')[0];
 
-if(document.getElementById('permachatDiv')){
-  body.removeChild(permachatDiv);
+if(document.getElementById('chatboxFrame')){
+  body.removeChild(permachatIframe);
   html.style.marginBottom = '0px';
 } else {
-  var permachatDiv = document.createElement('div');
-  permachatDiv.id = 'permachatDiv';
-  permachatDiv.setAttribute('style','position:fixed; display:block; background-color:grey; width:100%; height:200px; bottom:0; left:0; z-index:99999999;');
+  var permachatIframe = document.createElement('iframe');
+  permachatIframe.id = 'chatboxFrame';
+  permachatIframe.setAttribute('src','./chatbox.html');
+  permachatIframe.setAttribute('style','margin: 0px; border: 0px; position: fixed; display: block; border: none; z-index: 9999999; bottom: 0; left: 0; width: 100%; height: 200px');
   html.style.marginBottom = '200px';// this doesn't seem to work all the time -- see w3schools
-  body.appendChild(permachatDiv);
+  body.appendChild(permachatIframe);
 };

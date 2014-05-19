@@ -1,5 +1,5 @@
 
-var socket = io.connect('http://localhost:3000/');
+var socket = io.connect('http://permachat.herokuapp.com/');
 
 socket.on("connect", function(data) {
   function onClick(tab) {
