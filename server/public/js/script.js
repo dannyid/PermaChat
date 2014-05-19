@@ -1,15 +1,17 @@
 
 var socket = io.connect();
 
+var nickname = '';
+
 function addMessage( msg, nick ) {
 	$( "#chatEntries" ).append( '<div class="message"><p><span id="nick">'+nick+'</span> : '+msg+'</p></div>' );
 };
 
-function sentMessage() {
+function sendMessage() {
 	if ( $( '#messageInput' ).val() != "" ) 
 	{
 		socket.emit( 'message', $( '#messageInput' ).val());
-		addMessage( $( '#messageInput' ).val(), localStorage["name"] + " (Me)");
+		addMessage( $( '#messageInput' ).val(), nickname + " (Me)");
 		$( '#messageInput' ).val('');
 	}
 };
@@ -20,8 +22,8 @@ function setNick() {
 		$( '#chatControls' ).show();
 		$( '#nickInput' ).hide();
 		$( '#nickSet' ).hide();
-        localStorage["name"] = $( "#nickInput" ).val();
-        console.log("Name in localStroage: " + localStorage["name"])
+    nickname = $( "#nickInput" ).val();
+    console.log("Name for this session set to: " + nickname)
 	}
 };
 
@@ -37,10 +39,8 @@ socket.on( 'message', function( data ) {
 
 
 $( document ).ready( function() {
-    if (localStorage.name) {
-        $( "#nickInput" ).val(localStorage.name); 
-        console.log($( "#nickInput" ).val());
-        $( "#nickSet" ).click();
+    if (nickname) {
+        $( "#nickInput" ).val(nickname); 
         console.log($( "#nickInput" ).val());
     };    
 
@@ -50,11 +50,11 @@ $( document ).ready( function() {
         $( 'input' ).focus(); // focus on nick input upon page load
 	    $( "#nickSet" ).click( function() { 
             setNick(); 
-            $( 'input' ).focus(); // focus on messge input after submitting nick
+            $( 'input' ).focus(); // focus on message input after submitting nick
         } );
 	    $( "#submit" ).click( function() { 
-            sentMessage(); 
-            $( 'input' ).focus(); // focus on messge input after submitting message
+            sendMessage(); 
+            $( 'input' ).focus(); // focus on message input after submitting message
         } );
     });
 
@@ -66,6 +66,4 @@ $( document ).ready( function() {
     });
 
 });
-
-//localStorage test
 
