@@ -1,0 +1,12 @@
+html, body {
+  background-color: grey;
+}
+
+input#messageInput {
+  width: auto;
+}
+
+button#submit {
+  right: 0;
+  width: auto;
+}
